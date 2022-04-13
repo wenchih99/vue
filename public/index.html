@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>Login</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div>
+    <h1>主页</h1>
+    <img src="http://127.0.0.1:8083/getVerify">
+    <div >
+        <div >
+            <div >
+                <input  type="tel" id="verify_input" placeholder="请输入验证码" maxlength="4">
+            </div>
+        </div>
+        <input type="button" onclick="aVerify()" value="提交">
+    </div>
+</div>
+<script>
+    function aVerify(){
+        var value =$("#verify_input").val();
+        // alert(value);
+        $.ajax({
+            async: false,
+            type: 'post',
+            url: 'http://127.0.0.1:8083/checkVerify',
+            dataType: "json",
+            data: {
+                verifyInput: value
+            },
+            success: function (result) {
+                if (result) {
+                    alert("success!");
+                } else {
+                    alert("failed!");
+                }
+                // window.location.reload();
+            }
+        });
+    }
+    </script>
+</body>
+</html>
