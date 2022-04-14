@@ -6,9 +6,9 @@
     </div>
     <div class="container registration-container">
         <div class="input-group mb-3">
-			<input id="email" v-model="register_mail" type="text" class="form-control form-control-mail" placeholder="Email" autofocus>
-			<button @click="authcode" :class="{disabled: !this.authclick}" class="btn btn-primary btn-code">{{authcontent}}</button>
-		</div>
+            <input id="email" v-model="register_mail" type="text" class="form-control form-control-mail" placeholder="Email" autofocus>
+            <button @click="authcode" :class="{disabled: !this.authclick}" class="btn btn-primary btn-code">{{authcontent}}</button>
+        </div>
         <div class="form-floating mb-3 mt-3">
             <input id="authcode" v-model="register_code" type="text" placeholder="Auth Code" class="form-control">
             <label for="authcode">Auth Code</label>

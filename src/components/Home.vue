@@ -1,11 +1,21 @@
 <template>
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <nav class="nav col-12 col-md-auto mb-2 mb-md-0">
+        <div>
+            <i class="logo">logo</i>
+            <a class="navbar-brand" href="">BLOG</a>
+        </div>
+    </nav>
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 justify-content-center ">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+    </form>
+    <TabMenu class="ms-auto"/>
+    </header>
+</div>
+<div v-if="personal === true" 
+  class="container">
   <nav class="navbar navbar-expand-sm bg-white">
-    <div>
-      <i class="logo">logo</i>
-      <a class="navbar-brand" href="#">BLOG</a>
-    </div>
-    
-
     <ul class="navbar-nav me-auto">
       <li class="nav-item">
         <button class="navbar-link"
@@ -18,11 +28,14 @@
         </button>
       </li>
     </ul>
-    <TabMenu />
   </nav>
-  <div class="bg-light text-dark">
+  <div >
     <component v-bind:is="currentTabComponent"></component>
   </div>
+</div>
+<div v-else>
+    <AllPosts></AllPosts>
+</div>
   
 </template>
 
@@ -31,16 +44,18 @@ import TabHome from './home/HomeTab'
 import TabPosts from './home/PostTab'
 import TabArchive from './home/ArchiveTab'
 import TabMenu from './home/MenuTab'
+import AllPosts from './home/AllPost'
 export default{
     name: "HomeIndex",
     
     components: {
-        TabHome,TabPosts,TabArchive,TabMenu
+        TabHome,TabPosts,TabArchive,TabMenu,AllPosts
   },
     data() {
       return {
         currentTab: 'Home',
         tabs: ['Home', 'Posts', 'Archive'],
+        personal:false
       }
     },
     computed: {
@@ -69,5 +84,15 @@ export default{
 }
 .tab-button.active {
   background: #feaaaa;
+}
+.demo-tab {
+  border: 1px solid #ccc;
+  padding:10px;
+}
+.blog-post{
+    margin: auto;
+    padding: 30px;
+    width: 70%;
+    box-sizing: border-box
 }
 </style>

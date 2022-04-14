@@ -38,7 +38,8 @@
         },
         methods: {
             didSelectItem(index) {
-                this.$emit('select-menu', index);
+                console.log(this.menus[index])
+                //this.$emit('select-menu', index);
             }
         }
     }
