@@ -51,8 +51,9 @@ export default {
       }
   },
   methods:{
-        login(){
-            this.checkVerify()
+        async login(){
+            var that = this
+            await this.checkVerify()
             console.log(this.check)
             if(this.check == false)
             {
@@ -66,7 +67,8 @@ export default {
             })
             .then(function (response) {
                 console.log(response);
-                window.location.href='/blog'
+                localStorage.setItem('userid',that.login_id)
+                window.location.href='/'
             })
             .catch(function (error) {
             console.log(error);
@@ -90,7 +92,6 @@ export default {
             verifyInput: this.verifycode
             })
             .then(function (response) {
-                console.log(response);
                 that.check=response.data
                 console.log(that.check)
             })

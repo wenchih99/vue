@@ -49,7 +49,7 @@ export default{
     methods:{
         async getDatas(){
           await this.$vueaxios.post('/posts', {
-            author: "wenchihchang",
+            author: localStorage.getItem('userid'),
             }).then((res)=>{
                 console.log(res.data)
                 this.posts=res.data

@@ -1,7 +1,7 @@
 <template>
     <div v-if="isLogin"
         class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" >{{username}}</button>
+        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" >{{userid}}</button>
         <ul class="dropdown-menu">
             <li> 
                 <a class="dropdown-item" 
@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             isLogin:false,
-            username: '',
+            userid: '',
             menus: [{
                 name: "个人中心",
                 class: ""
@@ -50,8 +50,12 @@ export default {
     },
     methods: {
         didSelectItem(index) {
-            console.log(this.menus[index])
+            console.log(index)
             if(index==0){this.$emit('update:personal',true)}
+            else if(index==2){
+                this.$emit('update:personal',false)
+                this.signout()
+                }
         },
         signin()
         {
@@ -60,12 +64,25 @@ export default {
         signup()
         {
             window.location.href="/login#/register"
+        },
+        signout()
+        {
+            localStorage.removeItem('userid')
+            this.userid=null
+            this.isLogin=false
+            this.$vueaxios.post('/signout')
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
         }
     },
     mounted(){
-        this.username=localStorage.getItem('usernfame')
-        console.log(this.username)
-        if(this.username!=null)
+        this.userid=localStorage.getItem('userid')
+        console.log(this.userid)
+        if(this.userid!=null)
         {
             this.isLogin=true;
         }

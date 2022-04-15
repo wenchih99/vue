@@ -5,8 +5,8 @@
 export default{
     name: "BlogIndex",
 }
-localStorage.setItem('username','wenchih')
-console.log('username:'+localStorage.getItem('username'))
+
+console.log(localStorage)
 </script>
 
 <style scoped>
