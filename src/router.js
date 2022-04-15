@@ -9,7 +9,11 @@ const routes=[
         name:'edit',
         component:postEditor,
     },
-    {path:'/home',component:personalHome},
+    {
+        path:'/home',
+        name:'home',
+        component:personalHome
+    },
 ]
 
 const router=new createRouter({

@@ -2,15 +2,15 @@
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <nav class="nav col-12 col-md-auto mb-2 mb-md-0">
-        <div>
-            <i class="logo">logo</i>
-            <a class="navbar-brand" href="">BLOG</a>
-        </div>
+      <div>
+        <i class="logo">logo</i>
+        <a class="navbar-brand" href="">BLOG</a>
+      </div>
     </nav>
     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 justify-content-center ">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
     </form>
-    <TabMenu class="ms-auto"/>
+      <TabMenu v-model:personal="personal" class="ms-auto"/>
     </header>
 </div>
 <div v-if="personal === true" 
@@ -34,7 +34,7 @@
   </div>
 </div>
 <div v-else>
-    <AllPosts></AllPosts>
+    <AllPosts :searchAuthor="author"></AllPosts>
 </div>
   
 </template>
@@ -47,15 +47,15 @@ import TabMenu from './home/MenuTab'
 import AllPosts from './home/AllPost'
 export default{
     name: "HomeIndex",
-    
     components: {
         TabHome,TabPosts,TabArchive,TabMenu,AllPosts
-  },
+    },
     data() {
       return {
         currentTab: 'Home',
         tabs: ['Home', 'Posts', 'Archive'],
-        personal:false
+        personal:false,
+        author:''
       }
     },
     computed: {
@@ -63,7 +63,6 @@ export default{
         return 'tab-' + this.currentTab.toLowerCase()
       }
     },
-    
 }
 </script>
 

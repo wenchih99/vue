@@ -5,13 +5,18 @@
             v-for="post in posts"
             :key="post"
             :style="{'font-size':fontsize}"
-            @click="selectedPost = post"
             style="padding:20px"
             >
             <div class="card bg-light text-dark" style="cursor:pointer">
                 <div class="card-body" >
-                    <h3 class="card-body">{{ post.title }}</h3>
-                    <p v-html="$options.filters.ellipsis(post.content)"></p>
+                    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                        <p class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+                            @click="selectedPost = post">
+                            <strong class="fs-4" style="font-size:50px;">{{ post.title }}</strong>
+                        </p>
+                        <a @click="selectedAuthor(post.author)" class="align-items-right" style="text-decoration:none;">{{ post.author }}</a>
+                    </header>
+                    <p @click="selectedPost = post" v-html="$options.filters.ellipsis(post.content)"></p>
                 </div>
             </div>
         </div>
@@ -33,18 +38,21 @@
 
 <script>
 export default{
-    name: "TabPosts",
+    name: "AllPosts",
+    props:['searchAuthor'],
     data() {
-        this.getDatas()
+        console.log('username::'+localStorage.getItem('username'))
+        this.getDatas(this.searchAuthor)
         return {
         posts: [],
         selectedPost: null,
         fontsize:"25px",
     }},
     methods:{
-        async getDatas(){
-          await this.$vueaxios.post('/posts', {
-            author: "wenchihchang",
+        async getDatas(author){
+            console.log(author)
+            await this.$vueaxios.post('/allposts', {
+              author:author
             }).then((res)=>{
                 console.log(res.data)
                 this.posts=res.data
@@ -62,10 +70,16 @@ export default{
             })
             this.selectedPost=null
             this.posts.splice(this.posts.indexOf(this.selectedPost),1)
-            
-            
+        }, 
+        async selectedAuthor(author){
+            this.getDatas(author)
         },
-        
+    },
+    watch: {
+        selectedAuthor () {
+            console.log('====>>>', this.searchAuthor)
+            this.author=this.searchAuthor
+        }
     },
     filters:{
         ellipsis(value) {
