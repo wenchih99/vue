@@ -1,0 +1,44 @@
+https://open.weixin.qq.com/connect/oauth2/authorize
+?appid=wx8043e77156d71605
+&redirect_uri=https://127.0.0.1:8083
+&response_type=code
+&scope=snsapi_userinfo
+&state=123
+#wechat_redirect
+
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8043e77156d71605&redirect_uri=https://127.0.0.1:8083/wechatlogin&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect
+
+https://open.weixin.qq.com/connect/qrconnect?appid=wx8043e77156d71605&redirect_uri=http://www.wenchih99.top:8081&response_type=code&scope=snsapi_login&state=1234#wechat_redirect
+
+https://open.weixin.qq.com/connect/qrconnect?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect
+
+
+wxedef040d40fd7990
+433485c3a86bba292e4ed35ab4d536cb
+
+
+p@ssW0rd
+
+server {
+    listen 443 ssl; 
+    server_name your-domain.com; 
+    # ssl on; 
+    root /var/www/html/blog-run; 
+    index index.html;
+    ssl_certificate  /etc/nginx/cert/www.wenchih99.top_nginx/www.wenchih99.top_bundle.pem
+    ssl_certificate_key /etc/nginx/cert/www.wenchih99.top_nginx/www.wenchih99.top.key
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    location / {
+        index index.html index.htm;
+    }
+}
+server {
+    listen 80;
+    server_name www.wenchih99.top;// 你的域名
+    rewrite ^(.*)$ https://$host:443$1 permanent;// 把http的域名请求转成https且转发到443端口
+}
+
+Tb7mbpm54Z6HjPZ3

@@ -10,9 +10,8 @@
             <div class="card bg-light text-dark" style="cursor:pointer">
                 <div class="card-body" >
                     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                        <p class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
-                            @click="selectedPost = post">
-                            <strong class="fs-4" style="font-size:50px;">{{ post.title }}</strong>
+                        <p class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                            <strong @click="selectedPost = post" class="fs-4" style="font-size:50px;">{{ post.title }}</strong>
                         </p>
                         <a @click="selectedAuthor(post.author)" class="align-items-right" style="text-decoration:none;">{{ post.author }}</a>
                     </header>
@@ -51,7 +50,7 @@ export default{
     methods:{
         async getDatas(author){
             console.log(author)
-            await this.$vueaxios.post('/allposts', {
+            await this.axios.post('/allposts', {
               author:author
             }).then((res)=>{
                 console.log(res.data)
@@ -61,7 +60,7 @@ export default{
             })
         },
         delPost() {
-            this.$vueaxios.post('/delpost', {
+            this.axios.post('/delpost', {
             id: this.selectedPost.id,
             }).then((res)=>{
                 console.log(res.data)

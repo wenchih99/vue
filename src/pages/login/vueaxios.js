@@ -1,27 +1,25 @@
 import axios from 'axios'
-
-var vueaxios = axios.create({
-    baseURL: 'http://127.0.0.1:8083',
-    timeout: 1000*60*2,
-    withCredentials:true,
-})
-// 添加请求拦截器
-vueaxios.interceptors.request.use(function (config) {
-    // 在发送请求之前做些什么
-    return config;
-  }, function (error) {
-    // 对请求错误做些什么
-    return Promise.reject(error);
-  });
+axios.defaults.withCredentials=true
+//axios.defaults.baseURL='http://127.0.0.1:8083'
+axios.defaults.baseURL=localStorage.getItem("url")
+axios.defaults.timeout=1000*60*2
 
 // 添加响应拦截器
-vueaxios.interceptors.response.use(function (response) {
+axios.interceptors.request.use(config => {
+  //在发送请求之前做的一些操作，例如加上token这些
+  return config
+}, error => {
+  //对请求错误做些什么
+  return Promise.reject(error)
+})
+
+axios.interceptors.response.use(function (response) {
     return response;
   }, err=>{
     // 对响应错误做点什么
     switch(err.response.status){
         // 对得到的状态码的处理，具体的设置视自己的情况而定
-        case 401:
+        case 1003:
             alert("请登录!")
             window.location.href='/login'
             break
@@ -40,4 +38,4 @@ vueaxios.interceptors.response.use(function (response) {
     return Promise.reject(err);
   });
 
-export default vueaxios
+export default axios

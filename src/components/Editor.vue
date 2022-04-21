@@ -12,11 +12,12 @@
         </button>
       </div>
       <tip-tap v-model="content"></tip-tap>
-      <code>{{content}}</code>
+      <!-- <code>{{content}}</code> -->
     </div>
 </template>
 
 <script>
+
 import TipTap from './editor/TipTap'
 import { useRoute } from 'vue-router'
 export default {
@@ -29,6 +30,13 @@ export default {
       title:"",
       content:"",
       mark:false
+    }
+  },
+  beforeCreate()
+  {
+    if(localStorage.getItem('userid')==null){
+      window.location.href="/"
+      return
     }
   },
   mounted(){
@@ -49,7 +57,7 @@ export default {
   methods:{
     save(){
       console.log("save")
-      this.$vueaxios.post('/modifypost', {
+      this.axios.post('/modifypost', {
         id: this.post.id,
         title: this.title,
         content: this.content
@@ -63,7 +71,7 @@ export default {
     },
     add(){
       console.log("add")
-      this.$vueaxios.post('/addpost', {
+      this.axios.post('/addpost', {
         title: this.title,
         content: this.content
       })

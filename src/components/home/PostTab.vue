@@ -48,17 +48,18 @@ export default{
     }},
     methods:{
         async getDatas(){
-          await this.$vueaxios.post('/posts', {
-            author: localStorage.getItem('userid'),
+          await this.axios.post('/myposts', {
+            // author: localStorage.getItem('userid'),
             }).then((res)=>{
-                console.log(res.data)
+                console.log(res.status)
                 this.posts=res.data
             }).catch((err)=>{
                 console.log(err)
+                console.log(err.response.status)
             })
         },
         delPost() {
-            this.$vueaxios.post('/delpost', {
+            this.axios.post('/delpost', {
             id: this.selectedPost.id,
             }).then((res)=>{
                 console.log(res.data)

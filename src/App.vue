@@ -6,7 +6,6 @@ export default{
     name: "BlogIndex",
 }
 
-console.log(localStorage)
 </script>
 
 <style scoped>
