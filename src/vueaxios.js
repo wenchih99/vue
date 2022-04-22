@@ -22,7 +22,7 @@ axios.interceptors.response.use(function (response) {
     // 对响应错误做点什么
     switch(err.response.status){
         // 对得到的状态码的处理，具体的设置视自己的情况而定
-        case 1003:
+        case 1101:
           localStorage.removeItem('userid')
           //alert("请登录!")
           window.location.href='/'

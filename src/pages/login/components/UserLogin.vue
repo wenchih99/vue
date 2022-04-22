@@ -60,19 +60,12 @@ export default {
       }
   },
   methods:{
-        async login(){
+        login(){
             var that = this
-            await this.checkVerify()
-            console.log(this.check)
-            if(this.check == false)
-            {
-                this.refreshpic()
-                alert('验证码错误')
-                return
-            }
             this.axios.post('/login', {
-            userid: this.login_id,
-            password: md5(this.login_pwd)
+                userid: this.login_id,
+                password: md5(this.login_pwd),
+                code: this.verifycode
             })
             .then(function (response) {
                 console.log(response);
@@ -80,9 +73,10 @@ export default {
                 window.location.href='/'
             })
             .catch(function (error) {
-            console.log(error);
+                console.log(error);
+                that.refreshpic()
             });
-            this.refreshpic()
+            //this.refreshpic()
         },
         check_userid()
         {
@@ -94,24 +88,6 @@ export default {
             else{
                 this.userid_islegal=true;
             } 
-        },
-        check_password()
-        {
-
-        },
-        async checkVerify()
-        {
-            var that = this
-            await this.axios.post('/checkVerify',{
-            verifyInput: this.verifycode
-            })
-            .then(function (response) {
-                that.check=response.data
-                console.log(that.check)
-            })
-            .catch(function (error) {
-            console.log(error);
-            });
         },
         refreshpic()
         {

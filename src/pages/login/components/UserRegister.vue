@@ -10,11 +10,13 @@
             <button @click="authcode" :class="{disabled: !this.authclick}" class="btn btn-primary btn-code">{{authcontent}}</button>
         </div>
         <p v-show="!mail_islegal&&!mail_isempty" style="color:red">邮箱格式不合法</p>
-        <div v-show="isshow">
+
         <div class="form-floating mb-3 mt-3">
             <input id="register_authcode" v-model="register_code" type="text" placeholder="Auth Code" class="form-control">
             <label for="authcode">Auth Code</label>
         </div>
+
+        <div v-show="isshow">
         
         <div class="form-floating mb-3 mt-3">
             <input id="register_userid" v-model="register_id" v-on:input="check_userid" type="text" placeholder="User ID" class="form-control">
@@ -102,14 +104,13 @@ export default {
           this.axios.post('/register', {
             userid: this.register_id,
             password: md5(this.register_pwd),
-            mail: this.register_mail,
             code: this.register_code
             })
             .then(function (response) {
-            console.log(response);
+                console.log(response);
             })
             .catch(function (error) {
-            console.log(error);
+                console.log(error);
             });
       },
       authcode(){
@@ -122,10 +123,7 @@ export default {
           this.isshow=true
           this.authclick=false
           this.axios.post('/auth', {
-            userid: this.register_id,
-            password: this.register_pwd,
-            mail: this.register_mail,
-            code: this.register_code
+                mail: this.register_mail,
             })
             .then(function (response) {
             console.log(response);

@@ -19,16 +19,35 @@ axios.interceptors.response.use(function (response) {
     // 对响应错误做点什么
     switch(err.response.status){
         // 对得到的状态码的处理，具体的设置视自己的情况而定
-        case 1003:
-            alert("请登录!")
-            window.location.href='/login'
+        case 1101:
+            localStorage.removeItem("userid")
             break
-        case 403:
-            alert("登录失败!")
-            window.location.href='/login'
+        case 1102:
+            alert("密码或用户名错误!")
             break
-        case 406:
-            alert("注册失败!")
+        case 1103:
+            alert("验证码错误!")
+            break
+        case 1104:
+            alert("登录失败,请稍后再试!")
+            break
+        case 1201:
+            alert("用户名或邮箱已注册!")
+            break
+        case 1202:
+            alert("邮箱验证码错误!")
+            break
+        case 1203:
+            alert("用户信息不合法!")
+            break
+        case 1204:
+            alert("邮箱格式不合法!")
+            break
+        case 1205:
+            alert("邮箱验证码发送失败!")
+            break
+        case 1206:
+            alert("注册失败,请稍后再试!")
             break
         // case ...
         default:
