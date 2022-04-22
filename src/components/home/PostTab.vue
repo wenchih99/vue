@@ -45,6 +45,7 @@ export default{
         posts: [],
         selectedPost: null,
         fontsize:"25px",
+        
     }},
     methods:{
         async getDatas(){
