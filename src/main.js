@@ -7,7 +7,7 @@ import VueAxios from 'vue-axios'
 import axios from './vueaxios'
 
 //先查询后端是否已经登录
-if(localStorage.getItem("userid")!=null){axios.get('/checklogin')}
+if(localStorage.getItem("userid")!=null){axios.get('/api/checklogin')}
 
 const app=createApp(App)
 app.use(router)

@@ -50,7 +50,7 @@ export default{
     methods:{
         async getDatas(author){
             console.log(author)
-            await this.axios.post('/allposts', {
+            await this.axios.post(localStorage.getItem('url')+'/api/allposts', {
               author:author
             }).then((res)=>{
                 console.log(res.data)

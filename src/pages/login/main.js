@@ -6,7 +6,7 @@ import router from './router.js'
 import VueAxios from 'vue-axios'
 import axios from './vueaxios'
 
-if(localStorage.getItem("userid")!=null){axios.get('/checklogin')}
+if(localStorage.getItem("userid")!=null){axios.get('/api/checklogin')}
 
 const app=createApp(LoginRegister)
 app.use(router)

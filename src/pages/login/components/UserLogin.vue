@@ -54,7 +54,7 @@ export default {
         login_id:'',
         login_pwd:'',
         verifycode:'',
-        picurl:localStorage.getItem("url")+'/getVerify',
+        picurl:localStorage.getItem("url")+'/api/getVerify',
         check:false,
         userid_islegal:true
       }
@@ -92,7 +92,7 @@ export default {
         refreshpic()
         {
             var num=Math.ceil(Math.random()*10);
-            this.picurl=localStorage.getItem("url")+'/getVerify?'+num;
+            this.picurl=localStorage.getItem("url")+'/api/getVerify?'+num;
             this.verifycode=''
             this.check=false
         }

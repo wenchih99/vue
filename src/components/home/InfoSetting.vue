@@ -36,7 +36,7 @@ export default {
   data(){
       return{
         // headpic:"http://127.0.0.1:8083/headpic",
-        headpic:localStorage.getItem("url")+"/headpic",
+        headpic:localStorage.getItem("url")+"/blog/headpic",
         isupload:false
       }
   },

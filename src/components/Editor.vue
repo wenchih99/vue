@@ -19,7 +19,7 @@
 <script>
 
 import TipTap from './editor/TipTap'
-import { useRoute } from 'vue-router'
+import { useRoute,useRouter } from 'vue-router'
 export default {
   name:"PostEditor",
   components: {
@@ -52,7 +52,8 @@ export default {
   {
     const route = useRoute()
     const post=route.params
-    return {post}
+    const router = useRouter()
+    return {post,router}
   },
   methods:{
     save(){
@@ -68,6 +69,7 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+      this.router.go(-1)
     },
     add(){
       console.log("add")
@@ -81,6 +83,7 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+      this.router.go(-1)
     }
   }
 }

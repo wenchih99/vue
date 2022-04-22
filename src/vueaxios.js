@@ -2,7 +2,7 @@ import axios from 'axios'
 
 axios.defaults.withCredentials=true
 //axios.defaults.baseURL='http://127.0.0.1:8083'
-axios.defaults.baseURL=localStorage.getItem("url")
+axios.defaults.baseURL=localStorage.getItem("url")+'/blog'
 axios.defaults.timeout=1000*60*2
 
 
