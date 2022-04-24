@@ -89,7 +89,8 @@ export default {
         })
         .then(function (response) {
           console.log(response);
-          window.location.href='/'
+          alert("修改密码成功")
+          window.location.href='/login'
         })
         .catch(function (error) {
           console.log(error);
