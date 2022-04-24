@@ -24,16 +24,10 @@ axios.interceptors.response.use(function (response) {
         // 对得到的状态码的处理，具体的设置视自己的情况而定
         case 1101:
           localStorage.removeItem('userid')
+          localStorage.removeItem("role")
           //alert("请登录!")
           window.location.href='/'
           break
-        case 403:
-            alert("登录失败!")
-            window.location.href='/login'
-            break
-        case 406:
-            alert("注册失败!")
-            break
         // case ...
         default:
             console.log('其他错误')

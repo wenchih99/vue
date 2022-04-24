@@ -1,9 +1,20 @@
 import {createRouter,createWebHashHistory} from 'vue-router';
 import postEditor from './components/Editor'
 import personalHome from './components/Home'
+import pageError from './components/Error'
+import pageAdmin from './components/Admin'
 
 const routes=[
-    {path:'/',component:personalHome},
+    {
+        path:'/',
+        name:'index',
+        redirect:'/home',
+    },
+    {
+        path:'/admin',
+        name:'admin',
+        component:pageAdmin
+    },
     {
         path:'/edit',
         name:'edit',
@@ -16,6 +27,11 @@ const routes=[
         path:'/home',
         name:'home',
         component:personalHome
+    },
+    {
+        path:'/:pathMatch(.*)*',
+        name:'error',
+        component:pageError
     },
 ]
 

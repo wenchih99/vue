@@ -14,7 +14,7 @@ if(localStorage.getItem("userid")!=null){axios.get('https://127.0.0.1:8083/blog/
 const app=createApp(App)
 app.use(router)
 app.use(VueAxios,axios)
-app.mount('#app')
+app.mount('#index')
 
 
 

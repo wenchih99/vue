@@ -83,6 +83,7 @@ export default {
         signout()
         {
             localStorage.removeItem('userid')
+            localStorage.removeItem('role')
             this.userid=null
             this.isLogin=false
             this.axios.post('/signout')

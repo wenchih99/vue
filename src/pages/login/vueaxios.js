@@ -21,6 +21,7 @@ axios.interceptors.response.use(function (response) {
         // 对得到的状态码的处理，具体的设置视自己的情况而定
         case 1101:
             localStorage.removeItem("userid")
+            localStorage.removeItem("role")
             break
         case 1102:
             alert("密码或用户名错误!")
@@ -55,6 +56,9 @@ axios.interceptors.response.use(function (response) {
         case 1304:
             alert("找回失败,请稍后再试!")
             break
+        case 404:
+            window.location.href('/error.html')
+            break  
         // case ...
         default:
             console.log('其他错误')

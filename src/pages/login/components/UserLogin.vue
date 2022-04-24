@@ -69,6 +69,7 @@ export default {
             .then(function (response) {
                 console.log(response);
                 localStorage.setItem('userid',that.login_id)
+                localStorage.setItem("role",response.headers['role'])
                 window.location.href='/'
             })
             .catch(function (error) {
