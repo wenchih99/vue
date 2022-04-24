@@ -91,6 +91,7 @@ export default {
   },
   methods:{
       register(){
+          var that = this
           this.check_userid()
           this.check_pwd()
           this.check_ispwdsame()
@@ -108,6 +109,8 @@ export default {
             })
             .then(function (response) {
                 console.log(response);
+                localStorage.setItem('userid',that.register_id)
+                window.location.href='/'
             })
             .catch(function (error) {
                 console.log(error);
