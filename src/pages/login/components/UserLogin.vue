@@ -7,13 +7,13 @@
     <div class="container login-container">
         <div class="form-floating mb-3 mt-3">
             <input id="login_userid" v-model="login_id" type="text" placeholder="User ID" class="form-control"  v-on:input="check_userid" autofocus>
-            <label for="userid">User ID</label>
+            <label for="login_userid">User ID</label>
         </div>
         <div v-show="!userid_islegal" style="color:red">用户名含非法空白字符</div>
 
         <div class="form-floating mb-3 mt-3">
             <input id="login_passwd" v-model="login_pwd"  type="password" placeholder="Password" class="form-control">
-            <label for="passwd">Password</label>
+            <label for="login_passwd">Password</label>
         </div>
         
         <div class="input-group mb-3">

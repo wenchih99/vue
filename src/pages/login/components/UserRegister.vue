@@ -13,14 +13,14 @@
 
         <div class="form-floating mb-3 mt-3">
             <input id="register_authcode" v-model="register_code" type="text" placeholder="Auth Code" class="form-control">
-            <label for="authcode">Auth Code</label>
+            <label for="register_authcode">Auth Code</label>
         </div>
 
         <div v-show="isshow">
         
         <div class="form-floating mb-3 mt-3">
             <input id="register_userid" v-model="register_id" v-on:input="check_userid" type="text" placeholder="User ID" class="form-control">
-            <label for="userid">User ID</label>
+            <label for="register_userid">User ID</label>
         </div>
         <p v-show="!userid_lenth&&!userid_isempty" style="color:red"><i class="fa fa-times-circle"></i>用户名长度不小于8位</p>
         <p v-show="userid_lenth&&!userid_isempty" style="color:green"><i class="fa fa-check-square-o"></i>用户名长度不小于8位</p>
@@ -29,7 +29,7 @@
 
         <div class="form-floating mb-3 mt-3">
             <input id="register_passwd" v-model="register_pwd" v-on:input="check_pwd" type="password" placeholder="Password" class="form-control">
-            <label for="passwd">Password</label>  
+            <label for="register_passwd">Password</label>  
         </div>
         <p v-show="!pwd_lenth&&!pwd_isempty" style="color:red"><i class="fa fa-times-circle"></i>密码长度不小于8位</p>
         <p v-show="pwd_lenth&&!pwd_isempty" style="color:green"><i class="fa fa-check-square-o"></i>密码长度不小于8位</p>
