@@ -12,7 +12,7 @@
         </button>
       </div>
       <tip-tap v-model="content"></tip-tap>
-      <!-- <code>{{content}}</code> -->
+      <p v-text="content"></p>
     </div>
 </template>
 

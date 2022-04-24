@@ -41,13 +41,19 @@ axios.interceptors.response.use(function (response) {
             alert("用户信息不合法!")
             break
         case 1204:
-            alert("邮箱格式不合法!")
-            break
-        case 1205:
-            alert("邮箱验证码发送失败!")
-            break
-        case 1206:
             alert("注册失败,请稍后再试!")
+            break
+        case 1301:
+            alert("不存在该账号!")
+            break
+        case 1302:
+            alert("邮箱验证码错误!")
+            break
+        case 1303:
+            alert("用户信息不合法!")
+            break
+        case 1304:
+            alert("找回失败,请稍后再试!")
             break
         // case ...
         default:

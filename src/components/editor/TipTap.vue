@@ -56,6 +56,8 @@ export default {
       ],
       onUpdate:() => {
         this.$emit('update:modelValue',this.editor.getHTML())
+        // this.$emit('update:modelValue',this.editor.getJSON())
+        // console.log(this.editor.getJSON())
       }
     })
   },

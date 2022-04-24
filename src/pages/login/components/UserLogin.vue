@@ -42,7 +42,6 @@
  
 <script>
 import ForgotPassword from './PwdForgot.vue'
-import md5 from 'js-md5'
 export default {
   name: 'UserLogin',
   components:{
@@ -64,7 +63,7 @@ export default {
             var that = this
             this.axios.post('/login', {
                 userid: this.login_id,
-                password: md5(this.login_pwd),
+                password: this.login_pwd,
                 code: this.verifycode
             })
             .then(function (response) {

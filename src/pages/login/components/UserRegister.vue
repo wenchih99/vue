@@ -60,7 +60,6 @@
 </template>
 
 <script>
-import md5 from 'js-md5'
 export default {
   name: 'UserRegister',
   data(){
@@ -104,7 +103,7 @@ export default {
 
           this.axios.post('/register', {
             userid: this.register_id,
-            password: md5(this.register_pwd),
+            password: this.register_pwd,
             code: this.register_code
             })
             .then(function (response) {
