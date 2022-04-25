@@ -19,6 +19,9 @@ axios.interceptors.response.use(function (response) {
     // 对响应错误做点什么
     switch(err.response.status){
         // 对得到的状态码的处理，具体的设置视自己的情况而定
+        case 1100:
+            window.location.href="/"
+            break
         case 1101:
             localStorage.removeItem("userid")
             localStorage.removeItem("role")
@@ -57,7 +60,7 @@ axios.interceptors.response.use(function (response) {
             alert("找回失败,请稍后再试!")
             break
         case 404:
-            window.location.href('/error.html')
+            window.location.href='/error.html'
             break  
         // case ...
         default:

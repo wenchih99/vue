@@ -54,7 +54,7 @@ export default{
             await this.axios.post(localStorage.getItem('url')+'/api/allposts', {
               author:author
             }).then((res)=>{
-                console.log(res.data)
+                // console.log(res.data)
                 this.posts=res.data
                 for(let i=0;i<this.posts.length;i++)
                 {

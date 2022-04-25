@@ -23,6 +23,13 @@
                     账号设置
                 </a>
                 <a class="dropdown-item" 
+                    @click="didSelectItem(index)"
+                    href="#"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#pwdModal">
+                    修改密码
+                </a>
+                <a class="dropdown-item" 
                     @click="didSelectItem(2)"
                     href="#">
                     安全退出
@@ -37,16 +44,20 @@
     <div class="modal fade" id="myModal">
         <InfoSetting v-if="isLogin===true" v-model:picurl="headpic"></InfoSetting>
     </div>
+    <div class="modal fade" id="pwdModal">
+        <PwdModify v-if="isLogin===true"></PwdModify>
+    </div>
 </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
 import InfoSetting from './InfoSetting'
+import PwdModify from './ModifyPwd'
 export default {
     name: "user-menu",
     components:{
-        InfoSetting
+        InfoSetting,PwdModify
     },
     props:{
         personal:{
@@ -97,7 +108,7 @@ export default {
     },
     mounted(){
         this.userid=localStorage.getItem('userid')
-        console.log(this.userid)
+        // console.log(this.userid)
         if(this.userid!=null)
         {
             this.isLogin=true;
