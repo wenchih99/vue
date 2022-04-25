@@ -10,7 +10,11 @@ module.exports = defineConfig({
       template:'public/login.html',
       filename:'login.html',
     },
-    index:'src/main.js',
+    index:{
+      entry:'src/pages/index/main.js',
+      template:'public/index.html',
+      filename:'index.html',
+    },
   },
   devServer:{
     // host:"wenchih99.top",

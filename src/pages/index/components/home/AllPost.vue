@@ -36,11 +36,12 @@
 </template>
 
 <script>
+import xss from '../../xss'
 export default{
     name: "AllPosts",
     props:['searchAuthor'],
     data() {
-        console.log('username::'+localStorage.getItem('username'))
+        // console.log('username::'+localStorage.getItem('username'))
         this.getDatas(this.searchAuthor)
         return {
         posts: [],
@@ -55,6 +56,10 @@ export default{
             }).then((res)=>{
                 console.log(res.data)
                 this.posts=res.data
+                for(let i=0;i<this.posts.length;i++)
+                {
+                    this.posts[i].content=xss.process(this.posts[i].content)
+                }
             }).catch((err)=>{
                 console.log(err)
             })
@@ -88,7 +93,8 @@ export default{
         }
         return value;
         }
-    }
+    },
+    
 }
 </script>
 

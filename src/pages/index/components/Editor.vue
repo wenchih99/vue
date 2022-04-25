@@ -56,9 +56,9 @@ export default {
     return {post,router}
   },
   methods:{
-    save(){
+    async save(){
       console.log("save")
-      this.axios.post('/modifypost', {
+      await this.axios.post('/modifypost', {
         id: this.post.id,
         title: this.title,
         content: this.content
@@ -71,9 +71,9 @@ export default {
       });
       this.router.go(-1)
     },
-    add(){
+    async add(){
       console.log("add")
-      this.axios.post('/addpost', {
+      await this.axios.post('/addpost', {
         title: this.title,
         content: this.content
       })

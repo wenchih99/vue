@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import xss from '../../xss'
 export default{
     name: "TabPosts",
     data() {
@@ -54,6 +55,10 @@ export default{
             }).then((res)=>{
                 console.log(res.status)
                 this.posts=res.data
+                for(let i=0;i<this.posts.length;i++)
+                {
+                    this.posts[i].content=xss.process(this.posts[i].content)
+                }
             }).catch((err)=>{
                 console.log(err)
                 console.log(err.response.status)
